@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
+
 export default function Login() {
 
   useEffect(()=>{
@@ -21,8 +22,6 @@ export default function Login() {
   const navigate = useNavigate();
 
   const onSubmit = data => {
-    console.log('form input', username,password)
-
     setUsernameError("")
     setPwError("")
     setLoginAlert("")
@@ -39,24 +38,14 @@ export default function Login() {
         break;
       default:
     }
-
-
-      // axios.post('http://localhost:3001/signup', {username, password}).then(resp=>{
-      //   console.log('axios resp', resp)
-
-      // }).catch(err=>{
-      //   console.log(err)
-      // })
-
-      //for now do localstorage
       if (username !== "" && password !== ""){
         let userObj = JSON.parse(localStorage.getItem(username))
         if (userObj.password!== password){
           setLoginAlert(
             <Alert severity="error">
-    <AlertTitle>Error</AlertTitle>
-    Username or password is incorrect, please try again.
-  </Alert>
+              <AlertTitle>Error</AlertTitle>
+              Username or password is incorrect, please try again.
+            </Alert>
           )
         } else {
           localStorage.setItem('currentLoggedInUser', username)
@@ -77,11 +66,6 @@ export default function Login() {
   const [usernameError, setUsernameError] = useState("")
   const [pwError, setPwError] = useState("")
   const [loginAlert, setLoginAlert] = useState("")
-  let currentUser = localStorage.getItem('currentLoggedInUser')
-
-
-
-
 
   return (
 
@@ -130,10 +114,12 @@ export default function Login() {
           required
         />
         <div id="login-signup">
-          <p>Don't have an account? Signup here</p>
+          <p>Don't have an account?</p>
+          <p className="navigate-to-signup"
+            onClick={()=>navigate('/signup')}>
+          <i>Signup here</i>
+          </p>
         </div>
-
-
 
         <Button
             type="submit"

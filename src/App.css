@@ -38,16 +38,87 @@
 }
 
 .all-chats-msg-txt{
-  align-items: left;
-  text-align: left;
+
+  margin-left:5rem !important;
+  margin-top:-2rem !important;
+  text-align:left;
 
 }
 
 .all-chats-msg-container{
   cursor:pointer;
-  border: 1px solid black;
-  border-radius:8px;
-  margin-bottom:8px;
+  border-bottom: 1px solid grey;
 
+  margin-bottom:20px;
+  height:fit-content;
 }
 #user-greeting{padding-left:.2rem}
+.all-chats-user-date-username{
+  margin-right:.7rem;
+}
+.all-chats-user-date{
+  display:flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  margin-top:-1.8rem !important;
+  margin-left:-1rem !important;
+
+}
+.all-chats-user-date >p{
+  font-size:.8rem;
+
+}
+
+
+.all-chats-header-back-btn{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+
+
+}
+.all-chats-header{
+  margin:0 auto;
+  margin-left:3rem;
+  margin-bottom:2rem;
+  align-self: center;
+}
+
+.all-chats-arrow-back{
+  align-self:flex-start;
+  cursor:pointer;
+  width:2rem;
+  margin-top:.3rem!important;
+
+}
+.navigate-to-login{
+  cursor: pointer;
+  text-decoration:underline;
+}
+.navigate-to-signup{
+  cursor:pointer;
+  text-decoration:underline;
+}
+@media only screen and (max-width: 442px) {
+
+  .all-chats-arrow-back{
+    width:3rem;
+  }
+  .all-chats-header-back-btn{
+    display: flex;
+    flex-direction: row;
+
+  }
+
+}
+
+@media only screen and (max-width: 682px) {
+
+.app{
+  display:flex;
+  align-items: center !important;
+  justify-content:center!important;
+}
+
+}

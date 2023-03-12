@@ -6,9 +6,11 @@ import AllChats from './AllChats'
 
 import Container from '@material-ui/core/Container';
 import Grid from '@mui/material/Grid';
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 
 function App() {
+
+const [updateChat, setUpdateChat] = useState(false)
 
 
 
@@ -22,9 +24,11 @@ function App() {
         justifyContent="flex-end"
         style={{ minHeight: '10vh' }}
         sx={{ m: 2 }}
+        className="app"
       >
 
-        <Grid item xs={3}>
+        <Grid item xs={3}
+        className="account-menu">
           <AccountMenu/>
         </Grid>
       </Grid>
@@ -37,11 +41,11 @@ function App() {
         >
 
           <Grid item xs={12} md={6}>
-            <AllChats/>
+            <AllChats updateChat={updateChat}/>
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <NewChat/>
+            <NewChat setUpdateChat={setUpdateChat}/>
           </Grid>
         </Grid>
 

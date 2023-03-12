@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 
-export default function NewChat(){
+export default function NewChat(props){
   const [usernameError, setUsernameError] = useState("")
   const [username, setUsername] = useState("")
   const [message, setMessage] = useState("")
@@ -46,26 +46,36 @@ export default function NewChat(){
         //if there is no chat to that user, creat a new chat array
         let currentUser = localStorage.getItem('currentLoggedInUser')
         let currentUserData = JSON.parse(localStorage.getItem(currentUser))
+
         let otherUser = localStorage.getItem(username)
         let otherUserData = JSON.parse(otherUser)
-        console.log('other user dat?', otherUserData)
+
         let msgData = {message, date: new Date(), sender:currentUser}
 
         if (!currentUserData.chats[username]) {
           currentUserData.chats[username] = [msgData]
         } else {
-          currentUserData.chats[username].unshift(msgData)
+          currentUserData.chats[username].push(msgData)
         }
+
         if (!otherUserData.chats[currentUser]){
-          otherUserData.chats[username] = [msgData]
+          otherUserData.chats[currentUser] = [msgData]
         } else {
-          otherUserData.chats[username].unshift(msgData)
+          otherUserData.chats[currentUser].push(msgData)
         }
         //add a latest chats
 
         localStorage.setItem(currentUser, JSON.stringify(currentUserData))
         localStorage.setItem(username, JSON.stringify(otherUserData))
 
+        window.dispatchEvent(new Event('storage'))
+        setNewChatAlert(
+          <Alert severity="success">
+            <AlertTitle>Success</AlertTitle>
+            Message sent.
+          </Alert>
+        )
+        props.setUpdateChat(currentUser+msgData.date)
 
 
       }
@@ -80,7 +90,7 @@ export default function NewChat(){
         bgcolor: '#cfe8fc',
         height: '100%',
         p:2,
-        width:'40vw' }}
+         }}
       >
         {newChatAlert}
       <h3>New Chat</h3>

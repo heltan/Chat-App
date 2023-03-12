@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-  console.log('req', req.body)
   //check if item in localstorage
   if (localStorage.getItem(req.body.username)){
     res.send('User already exists')

@@ -32,7 +32,6 @@ export default function AccountMenu() {
 
     useEffect(()=>{
     if (!localStorage.getItem('currentLoggedInUser')){
-      console.log('no current logged in user?')
       navigate("/login")
     }
   })
@@ -91,22 +90,22 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        {/* <MenuItem onClick={handleClose}>
           <Avatar /> Profile
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
+        </MenuItem> */}
+        {/* <Divider /> */}
+        {/* <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add Friend
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
+        </MenuItem> */}
+        {/* <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />

@@ -3,15 +3,14 @@ import React,  { useState }  from 'react'
 import { TextField } from "@mui/material";
 import Stack from '@mui/material/Stack';
 import { Grid, Button, Alert, AlertTitle } from '@mui/material'
-
+import { useNavigate } from "react-router-dom";
 import axios from "axios"
 
 
 
 export default function Signup() {
+  const navigate = useNavigate()
   const onSubmit = data => {
-    console.log('form input', username,password)
-
     setUsernameError("")
     setPwError("")
     setSignupAlert("")
@@ -36,20 +35,12 @@ export default function Signup() {
     }
     if (usernameError === "" && pwError === ""){
 
-      // axios.post('http://localhost:3001/signup', {username, password}).then(resp=>{
-      //   console.log('axios resp', resp)
-
-      // }).catch(err=>{
-      //   console.log(err)
-      // })
-
-      //for now do localstorage
       if (localStorage.getItem(username)){
         setSignupAlert(
           <Alert severity="error">
-  <AlertTitle>Error</AlertTitle>
-  Username already exists!
-</Alert>
+            <AlertTitle>Error</AlertTitle>
+            Username already exists!
+          </Alert>
         )
       } else {
         let userObj = {password, chats: {}}
@@ -113,7 +104,12 @@ export default function Signup() {
           required
         />
         <div id="signup-login">
-          <p>Already have an account? Login here</p>
+          <p>Already have an account?</p>
+          <p
+            className="navigate-to-login"
+            onClick={()=>{
+              navigate('/login')
+            }}><i>Login here</i></p>
         </div>
 
 
