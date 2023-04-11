@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# A chat application 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Signup, login, add friends and send messages. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
