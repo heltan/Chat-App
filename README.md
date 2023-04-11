@@ -1,6 +1,6 @@
 # A chat application 
 
-Signup, login, add friends and send messages. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Signup, login, and send messages to users. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
